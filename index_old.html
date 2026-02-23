@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StickerFlow | Adesivos Personalizados Premium</title>
+  
+  <!-- Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Config Customization -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5F1F',
+              blue: '#6C63FF',
+              bgLight: '#FAFBFF',
+              surface: '#FFFFFF',
+              heading: '#1A1A2E',
+              bodyText: '#4A4A68',
+              success: '#10B981', // Verde suave para PIX
+            }
+          },
+          fontFamily: {
+            heading: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'glass': '0px 10px 30px rgba(0, 0, 0, 0.05)',
+            'orange-glow': '0 4px 14px 0 rgba(255, 95, 31, 0.39)',
+            'floating': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+          },
+          letterSpacing: {
+            tightest: '-0.02em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      background-color: #FAFBFF;
+      color: #4A4A68;
+    }
+    
+    .btn-primary {
+      background-color: #FF5F1F;
+      color: #FFFFFF;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 14px 0 rgba(255, 95, 31, 0.39);
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 95, 31, 0.5);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #6C63FF;
+      border: 2px solid #6C63FF;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+    }
+    .btn-secondary:hover {
+      background-color: #6C63FF;
+      color: #FFFFFF;
+    }
+
+    .product-card {
+      border-radius: 16px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+      background: #FFFFFF;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-actions-overlay {
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(255,255,255,1) 60%, rgba(255,255,255,0));
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+    }
+
+    .product-card:hover .card-actions-overlay {
+      bottom: 0;
+      opacity: 1;
+    }
+    
+    .product-card:hover .qty-selector-container {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .qty-selector-container {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .search-input {
+      background-color: #F3F4F6;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .search-input:focus {
+      background-color: #FFFFFF;
+      border-color: #6C63FF;
+      outline: none;
+    }
+
+    .size-tag {
+      background: linear-gradient(135deg, #6C63FF 0%, #4facfe 100%);
+    }
+
+    /* Brinde banner gradient */
+    .brinde-banner {
+      background: linear-gradient(135deg, #1A1A2E 0%, #2A2A4A 100%);
+    }
+  </style>
+</head>
+<body class="font-body text-brand-bodyText antialiased">
+
+  <!-- Header -->
+  <header class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm transition-all duration-300" id="header">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-orange to-pink-500 flex items-center justify-center text-white shadow-orange-glow group-hover:scale-105 transition-transform">
+          <i data-lucide="layers" class="w-6 h-6"></i>
+        </div>
+        <span class="font-heading font-bold text-2xl text-brand-heading tracking-tightest">StickerFlow</span>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="hidden md:flex flex-1 max-w-lg mx-8 relative">
+        <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+          <i data-lucide="search" class="w-5 h-5 text-gray-400"></i>
+        </div>
+        <input type="text" placeholder="Busque por formatos, tamanhos..." 
+          class="w-full search-input rounded-full py-3 pl-12 pr-4 text-brand-heading font-medium placeholder-gray-400 shadow-inner">
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <button class="p-2 text-brand-heading hover:text-brand-blue transition-colors relative">
+          <i data-lucide="user" class="w-6 h-6"></i>
+        </button>
+        <button class="p-2 text-brand-heading hover:text-brand-blue transition-colors relative group">
+          <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+          <span class="absolute top-0 right-0 w-5 h-5 bg-brand-orange text-white text-xs font-bold rounded-full flex items-center justify-center transform scale-100 group-hover:scale-110 transition-transform" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <!-- Background Decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-brand-blue/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+    <div class="absolute top-20 right-0 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-brand-blue/10 mb-8 animate-fade-in-up">
+        <span class="flex h-2 w-2 rounded-full bg-brand-orange animate-pulse"></span>
+        <span class="text-sm font-semibold text-brand-blue">Produção em 24 horas</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl font-heading font-extrabold text-brand-heading tracking-tightest mb-6 leading-tight max-w-4xl mx-auto">
+        Sua Marca em <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-pink-500">Cada Detalhe.</span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-brand-bodyText max-w-2xl mx-auto mb-10 leading-relaxed font-body">
+        Adesivos em vinil premium, à prova d'água e prontos para uso. Destaque sua embalagem com acabamento profissional perfeito para Delivery, Açaí e Potes.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button class="btn-primary py-4 px-8 font-semibold text-lg w-full sm:w-auto flex items-center justify-center gap-2">
+          Ver Pacotes Disponíveis
+          <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+        <button class="btn-secondary py-4 px-8 font-semibold text-lg w-full sm:w-auto flex items-center justify-center gap-2">
+          <i data-lucide="play-circle" class="w-5 h-5"></i>
+          Ver Qualidade
+        </button>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="mt-16 flex items-center justify-center gap-8 flex-wrap opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+        <div class="flex items-center gap-2 text-brand-heading font-semibold"><i data-lucide="shield-check" class="text-brand-success w-5 h-5"></i> Vinil Impermeável</div>
+        <div class="flex items-center gap-2 text-brand-heading font-semibold"><i data-lucide="zap" class="text-brand-orange w-5 h-5"></i> Corte a Laser</div>
+        <div class="flex items-center gap-2 text-brand-heading font-semibold"><i data-lucide="truck" class="text-brand-blue w-5 h-5"></i> Envio Expresso</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner Brinde PIX -->
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+    <div class="brinde-banner rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-floating text-white relative overflow-hidden">
+      <!-- Decorative circles -->
+      <div class="absolute -right-20 -top-20 w-64 h-64 bg-brand-success/20 rounded-full blur-2xl"></div>
+      
+      <div class="flex items-start gap-6 relative z-10 w-full md:w-auto">
+        <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-sm shrink-0">
+          <i data-lucide="gift" class="w-8 h-8 text-brand-success"></i>
+        </div>
+        <div>
+          <h3 class="font-heading text-2xl font-bold mb-2">Ganhe Mais com PIX!</h3>
+          <p class="text-gray-300 font-body text-base max-w-md">
+            Pagamentos aprovados na hora ganham <strong class="text-white">10% de adesivos extras</strong> no pacote como brinde exclusivo.
+          </p>
+        </div>
+      </div>
+      <div class="relative z-10 shrink-0 self-start md:self-center">
+        <span class="inline-flex items-center gap-2 bg-brand-success/20 text-brand-success px-4 py-2 rounded-full font-bold uppercase tracking-wider text-sm border border-brand-success/30">
+          <i data-lucide="check-circle-2" class="w-4 h-4"></i> Aproveitar Brinde
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-gray-200 pb-6">
+      <div>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-brand-heading mb-3">Modelos Mais Vendidos</h2>
+        <p class="text-brand-bodyText text-lg">Formatos perfeitos para elevar o nível da sua embalagem.</p>
+      </div>
+      
+      <!-- Tabs (Mock - Visual Only) -->
+      <div class="flex gap-2 p-1 bg-white rounded-xl shadow-sm border border-gray-100">
+        <button class="px-5 py-2 rounded-lg bg-brand-bgLight text-brand-blue font-semibold text-sm transition-colors">Redondos</button>
+        <button class="px-5 py-2 rounded-lg text-brand-bodyText hover:bg-gray-50 font-medium text-sm transition-colors">Quadrados</button>
+        <button class="px-5 py-2 rounded-lg text-brand-bodyText hover:bg-gray-50 font-medium text-sm transition-colors">Corte Especial</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      
+      <!-- Card 1 -->
+      <article class="product-card group flex flex-col h-full">
+        <!-- Mockup Image Area -->
+        <div class="relative aspect-[4/3] bg-gray-100 overflow-hidden isolate">
+          <!-- Placeholder Mockup Image -->
+          <img src="https://images.unsplash.com/photo-1628149462522-834c89cf0028?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mockup Copo Açaí 4x4cm" class="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105">
+          
+          <div class="absolute top-3 left-3 z-10 size-tag text-white px-3 py-1 rounded-lg font-bold text-sm shadow-md">
+            4x4 cm
+          </div>
+          <div class="absolute top-3 right-3 z-10 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md text-xs font-bold text-brand-orange shadow-sm">
+            Mais Popular
+          </div>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col relative">
+          <h3 class="font-heading font-bold text-lg text-brand-heading mb-1 line-clamp-1 hover:text-brand-blue cursor-pointer">Adesivo Redondo Vinil</h3>
+          <p class="text-xs text-brand-bodyText mb-4">100 unidades • Branco Brilho</p>
+          
+          <div class="mt-auto">
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-sm text-gray-400 line-through">R$ 55,00</span>
+              <span class="text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded">Economize 15%</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <div>
+                <span class="font-heading font-extrabold text-2xl text-brand-heading">R$ 46,75</span>
+                <span class="text-xs text-brand-success font-bold block">via Pix</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quantity Selector (Visible before hover) -->
+          <div class="qty-selector-container mt-4 flex items-center w-full bg-gray-50 rounded-lg p-1 border border-gray-100">
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, -1)">
+              <i data-lucide="minus" class="w-4 h-4"></i>
+            </button>
+            <input type="number" value="1" class="flex-1 w-full text-center bg-transparent border-none focus:outline-none font-bold text-brand-heading text-sm" readonly>
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, 1)">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Hover Action -->
+          <div class="card-actions-overlay flex flex-col gap-2">
+            <button class="btn-primary w-full py-3 text-sm font-bold shadow-md cursor-pointer relative z-20" onclick="addToCart()">
+              Personalizar Agora
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="product-card group flex flex-col h-full">
+        <div class="relative aspect-[4/3] bg-gray-100 overflow-hidden isolate">
+          <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mockup Caixa Delivery 5x5cm" class="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute top-3 left-3 z-10 size-tag text-white px-3 py-1 rounded-lg font-bold text-sm shadow-md">5x5 cm</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col relative">
+          <h3 class="font-heading font-bold text-lg text-brand-heading mb-1 line-clamp-1 hover:text-brand-blue cursor-pointer">Adesivo Quadrado Vinil</h3>
+          <p class="text-xs text-brand-bodyText mb-4">100 unidades • Branco Fosco</p>
+          <div class="mt-auto">
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-sm text-gray-400 line-through">R$ 68,00</span>
+              <span class="text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded">Economize 15%</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <div>
+                <span class="font-heading font-extrabold text-2xl text-brand-heading">R$ 57,80</span>
+                <span class="text-xs text-brand-success font-bold block">via Pix</span>
+              </div>
+            </div>
+          </div>
+          <div class="qty-selector-container mt-4 flex items-center w-full bg-gray-50 rounded-lg p-1 border border-gray-100">
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, -1)">
+              <i data-lucide="minus" class="w-4 h-4"></i>
+            </button>
+            <input type="number" value="1" class="flex-1 w-full text-center bg-transparent border-none focus:outline-none font-bold text-brand-heading text-sm" readonly>
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, 1)">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="card-actions-overlay flex flex-col gap-2">
+            <button class="btn-primary w-full py-3 text-sm font-bold shadow-md cursor-pointer relative z-20" onclick="addToCart()">
+               Personalizar Agora
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="product-card group flex flex-col h-full">
+        <div class="relative aspect-[4/3] bg-gray-100 overflow-hidden isolate">
+          <img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mockup Pote Vidro 3x3cm" class="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute top-3 left-3 z-10 size-tag text-white px-3 py-1 rounded-lg font-bold text-sm shadow-md">3x3 cm</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col relative">
+          <h3 class="font-heading font-bold text-lg text-brand-heading mb-1 line-clamp-1 hover:text-brand-blue cursor-pointer">Adesivo Redondo Mini</h3>
+          <p class="text-xs text-brand-bodyText mb-4">250 unidades • Transparente</p>
+          <div class="mt-auto">
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-sm text-gray-400 line-through">R$ 80,00</span>
+              <span class="text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded">Economize 15%</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <div>
+                <span class="font-heading font-extrabold text-2xl text-brand-heading">R$ 68,00</span>
+                <span class="text-xs text-brand-success font-bold block">via Pix</span>
+              </div>
+            </div>
+          </div>
+          <div class="qty-selector-container mt-4 flex items-center w-full bg-gray-50 rounded-lg p-1 border border-gray-100">
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, -1)">
+              <i data-lucide="minus" class="w-4 h-4"></i>
+            </button>
+            <input type="number" value="1" class="flex-1 w-full text-center bg-transparent border-none focus:outline-none font-bold text-brand-heading text-sm" readonly>
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, 1)">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="card-actions-overlay flex flex-col gap-2">
+            <button class="btn-primary w-full py-3 text-sm font-bold shadow-md cursor-pointer relative z-20" onclick="addToCart()">
+               Personalizar Agora
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="product-card group flex flex-col h-full hidden md:flex">
+        <div class="relative aspect-[4/3] bg-gray-100 overflow-hidden isolate">
+           <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mockup Sacola 9x9cm" class="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute top-3 left-3 z-10 size-tag text-white px-3 py-1 rounded-lg font-bold text-sm shadow-md">9x9 cm</div>
+        </div>
+        <div class="p-5 flex-1 flex flex-col relative">
+          <h3 class="font-heading font-bold text-lg text-brand-heading mb-1 line-clamp-1 hover:text-brand-blue cursor-pointer">Adesivo Retangular</h3>
+          <p class="text-xs text-brand-bodyText mb-4">50 unidades • Holográfico</p>
+          <div class="mt-auto">
+            <div class="flex items-end gap-2 mb-1">
+              <span class="text-sm text-gray-400 line-through">R$ 90,00</span>
+              <span class="text-xs font-medium bg-green-100 text-green-700 px-2 py-0.5 rounded">Economize 15%</span>
+            </div>
+            <div class="flex items-end justify-between">
+              <div>
+                <span class="font-heading font-extrabold text-2xl text-brand-heading">R$ 76,50</span>
+                <span class="text-xs text-brand-success font-bold block">via Pix</span>
+              </div>
+            </div>
+          </div>
+          <div class="qty-selector-container mt-4 flex items-center w-full bg-gray-50 rounded-lg p-1 border border-gray-100">
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, -1)">
+              <i data-lucide="minus" class="w-4 h-4"></i>
+            </button>
+            <input type="number" value="1" class="flex-1 w-full text-center bg-transparent border-none focus:outline-none font-bold text-brand-heading text-sm" readonly>
+            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-md hover:bg-white text-brand-heading hover:shadow-sm" onclick="updateQty(this, 1)">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="card-actions-overlay flex flex-col gap-2">
+            <button class="btn-primary w-full py-3 text-sm font-bold shadow-md cursor-pointer relative z-20" onclick="addToCart()">
+               Personalizar Agora
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Dark Minimal Footer -->
+  <footer class="bg-[#1A1A2E] pt-16 pb-8 border-t border-white/10">
+    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        
+        <!-- Col 1 -->
+        <div>
+          <a href="#" class="flex items-center gap-2 mb-6 group opacity-90 hover:opacity-100 transition-opacity">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-orange to-pink-500 flex items-center justify-center text-white">
+              <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <span class="font-heading font-bold text-xl text-white tracking-tightest">StickerFlow</span>
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed font-body">
+            Revolucionando as embalagens de pequenos e médios negócios com adesivos de alta qualidade e envio rápido.
+          </p>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4 class="text-white font-heading font-bold mb-6 uppercase text-sm tracking-wider opacity-80">Navegação</h4>
+          <ul class="space-y-3">
+            <li><a href="#" class="text-gray-400 hover:text-white hover:pl-1 transition-all text-sm font-medium">Início</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white hover:pl-1 transition-all text-sm font-medium">Todos os Formatos</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white hover:pl-1 transition-all text-sm font-medium">Materiais (Vinil, Papel, Holográfico)</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white hover:pl-1 transition-all text-sm font-medium">Como Enviar a Arte</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4 class="text-white font-heading font-bold mb-6 uppercase text-sm tracking-wider opacity-80">Contato</h4>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i data-lucide="message-circle" class="w-5 h-5 text-brand-orange mt-0.5"></i>
+              <div>
+                <p class="text-white text-sm font-bold">WhatsApp</p>
+                <a href="#" class="text-gray-400 hover:text-brand-orange transition-colors text-sm">(11) 99999-9999</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i data-lucide="mail" class="w-5 h-5 text-brand-blue mt-0.5"></i>
+              <div>
+                <p class="text-white text-sm font-bold">E-mail</p>
+                <a href="#" class="text-gray-400 hover:text-brand-blue transition-colors text-sm">ola@stickerflow.com.br</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <h4 class="text-white font-heading font-bold mb-6 uppercase text-sm tracking-wider opacity-80">Segurança & Pagamento</h4>
+          <div class="flex gap-3 mb-6">
+            <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center shrink-0 border border-white/5"><i data-lucide="banknote" class="w-5 h-5 text-gray-300"></i></div>
+            <div class="w-12 h-8 bg-white/10 rounded flex items-center justify-center shrink-0 border border-white/5"><i data-lucide="credit-card" class="w-5 h-5 text-gray-300"></i></div>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-brand-success/10 rounded-lg border border-brand-success/20">
+            <i data-lucide="lock" class="w-5 h-5 text-brand-success"></i>
+            <span class="text-gray-300 text-xs font-semibold">Compra 100% Segura e Criptografada</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">© 2026 StickerFlow. Todos os direitos reservados.</p>
+        <div class="flex gap-4">
+          <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+          <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Sticky Header Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('shadow-md');
+        header.classList.replace('py-4', 'py-2');
+      } else {
+        header.classList.remove('shadow-md');
+        header.classList.replace('py-2', 'py-4');
+      }
+    });
+
+    // Quantity Selector logic
+    window.updateQty = function(btn, change) {
+      const container = btn.closest('.qty-selector-container');
+      const input = container.querySelector('input');
+      let val = parseInt(input.value);
+      
+      val += change;
+      if (val < 1) val = 1;
+      if (val > 99) val = 99;
+      
+      input.value = val;
+    }
+
+    // Cart logic
+    let tempCartCounter = 0;
+    window.addToCart = function() {
+      // Simulate adding to cart with a small visual feedback
+      tempCartCounter++;
+      const cartEl = document.getElementById('cart-count');
+      
+      cartEl.style.transform = 'scale(1.5)';
+      cartEl.innerText = tempCartCounter;
+      
+      setTimeout(() => {
+        cartEl.style.transform = 'scale(1)';
+      }, 300);
+    }
+  </script>
+</body>
+</html>
