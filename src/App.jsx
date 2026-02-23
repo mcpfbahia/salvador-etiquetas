@@ -5,6 +5,7 @@ import ProductGrid from './components/ProductGrid';
 import CartDrawer from './components/CartDrawer';
 import UploadModal from './components/UploadModal';
 import ProductPage from './pages/ProductPage';
+import InfiniteMarquee from './components/InfiniteMarquee';
 import ArtworkApprovalModal from './components/ArtworkApprovalModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Footer from './components/Footer';
@@ -169,7 +170,9 @@ export default function App() {
                     <>
                         <HeroSection onCustomize={() => setUploadAberto(true)} />
 
-                        <section className="mt-16">
+                        <InfiniteMarquee />
+
+                        <section className="mt-8 md:mt-16">
                             <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8 border-b border-gray-200 pb-6">
                                 <h2 className="text-3xl font-bold text-[var(--color-heading)] tracking-tight">Modelos Populares</h2>
 
