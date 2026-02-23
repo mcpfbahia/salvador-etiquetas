@@ -47,7 +47,7 @@ export default function ProductPage({ produto, onVoltar, onAdicionar, categorias
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-20">
 
                 {/* Lado Esquerdo - Galeria (Estilo Apple/Neo-SaaS) */}
-                <div className="lg:col-span-6 sticky top-28">
+                <div className="lg:col-span-6 lg:sticky lg:top-28">
                     <div className="bg-[var(--color-surface)] rounded-3xl p-4 md:p-8 shadow-[var(--shadow-glass)] flex items-center justify-center relative overflow-hidden group">
                         {brinde > 0 && (
                             <div className="absolute top-6 right-6 z-10 bg-gradient-to-br from-green-400 to-green-600 text-white px-4 py-2 rounded-xl font-bold text-sm shadow-lg shadow-green-500/30 flex items-center gap-2 transform rotate-2">
