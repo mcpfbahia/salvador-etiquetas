@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Facebook, MessageCircle, Mail, MapPin, ShieldCheck, CreditCard } from 'lucide-react';
+import { Instagram, Facebook, MessageCircle, Mail, MapPin, ShieldCheck, CreditCard, Truck } from 'lucide-react';
 
 export default function Footer() {
     return (
@@ -97,7 +97,11 @@ export default function Footer() {
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center gap-4 text-gray-500">
-                        {/* Formas de pagamento / Seguranca */}
+                        {/* Formas de pagamento / Seguranca / Envio */}
+                        <div className="flex items-center gap-1 flex-row text-orange-500 hover:text-orange-600 transition-colors cursor-default mr-4">
+                            <Truck size={20} />
+                            <span className="text-xs font-bold tracking-wide">ENVIAMOS PARA TODO O BRASIL</span>
+                        </div>
                         <div className="flex items-center gap-1 hover:text-gray-300 transition-colors cursor-default" title="Pagamento via Pix">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                             <span className="text-xs font-semibold">PIX</span>
