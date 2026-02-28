@@ -44,6 +44,7 @@ export default function ProductCard({ produto, onAdicionar, onVisualizar }) {
                 <img
                     src={produto.image || "https://images.unsplash.com/photo-1623916298696-0373e97022d2?q=80&w=800&auto=format&fit=crop"}
                     alt={produto.name}
+                    crossOrigin="anonymous"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute top-3 right-3 bg-white/90 backdrop-blur text-[10px] font-bold px-3 py-1 rounded-full text-slate-800 shadow-sm uppercase tracking-wider">
@@ -56,7 +57,12 @@ export default function ProductCard({ produto, onAdicionar, onVisualizar }) {
 
                 {/* Título e Subtítulo */}
                 <div className="mb-5">
-                    <h3 className="font-bold text-slate-800 text-xl mb-1 leading-tight">{produto.name}</h3>
+                    <h3
+                        onClick={onVisualizar}
+                        className="font-bold text-slate-800 text-xl mb-1 leading-tight cursor-pointer hover:text-cyan-600 transition-colors"
+                    >
+                        {produto.name}
+                    </h3>
                     <p className="text-sm text-[#334155]">À prova d'água, ideal para potes e copos.</p>
                 </div>
 
@@ -141,10 +147,10 @@ export default function ProductCard({ produto, onAdicionar, onVisualizar }) {
                     </div>
 
                     <button
-                        onClick={handleAddToCart}
+                        onClick={onVisualizar}
                         className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-orange-500/30 cursor-pointer"
                     >
-                        Adicionar ao Carrinho
+                        Personalizar agora
                     </button>
                 </div>
 

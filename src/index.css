@@ -30,10 +30,13 @@
   }
 }
 
-@layer base {
-  body {
-    background-color: var(--color-background);
-    color: var(--color-body);
-    font-family: var(--font-sans);
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

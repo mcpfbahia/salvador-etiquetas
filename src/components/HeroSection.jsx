@@ -4,6 +4,15 @@ import { Droplets, Snowflake, Scissors, CheckCircle } from 'lucide-react';
 
 const slides = [
     {
+        id: 0,
+        layout: 'centered',
+        title: "Etiquetas que fazem sua marca brilhar",
+        subtitle: "Do rótulo artesanal ao lacre industrial, entregamos a excelência que seu produto merece. Personalize cada detalhe com acabamentos exclusivos.",
+        ctaText: "Explorar Modelos",
+        ctaPrimary: true,
+        image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
         id: 1,
         layout: 'split',
         title: <>Adesivos em Vinil <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-yellow-400 to-cyan-500">Premium.</span></>,
@@ -23,7 +32,7 @@ const slides = [
         subtitle: "Finalize sua compra com PIX e garanta até 100 etiquetas extras grátis para turbinar seu delivery.",
         ctaText: "Aproveitar Promoção",
         ctaPrimary: false,
-        image: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=1200&auto=format&fit=crop",
+        image: "/banner-brinde-pix.png",
     }
 ];
 

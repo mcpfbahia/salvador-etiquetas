@@ -15,10 +15,10 @@ export default function Footer() {
                             <img src="/logo-salvador-etiquetas1.svg" alt="Logo" className="w-10 h-10 object-contain" />
                             <div className="flex flex-col justify-center leading-none">
                                 <div className="flex items-baseline gap-1.5 leading-none">
-                                    <span className="text-2xl font-black tracking-tight text-orange-600">Salvador</span>
-                                    <span className="text-xl font-medium tracking-wide text-cyan-700">Etiquetas</span>
+                                    <span className="text-xl md:text-2xl font-black tracking-tight text-orange-600">Salvador</span>
+                                    <span className="text-lg md:text-xl font-medium tracking-wide text-cyan-700">Etiquetas</span>
                                 </div>
-                                <span className="text-[10px] font-semibold text-slate-400 tracking-[0.2em] uppercase mt-1">Comunicação Visual</span>
+                                <span className="text-[9px] md:text-[10px] font-semibold text-slate-400 tracking-[0.2em] uppercase mt-1">Comunicação Visual</span>
                             </div>
                         </div>
                         <p className="text-sm leading-relaxed text-slate-500">
