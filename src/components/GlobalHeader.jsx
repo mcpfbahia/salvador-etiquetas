@@ -150,11 +150,11 @@ export default function GlobalHeader({
                         { label: 'Adesivos Transparentes', filter: 'Transparente' },
                         { label: 'Papel Kraft', filter: 'Papel' },
                         { label: 'Rótulos e Embalagens', filter: 'Rotulos' },
-                        { label: 'Contato', filter: 'Contato' }
+                        { label: 'Central de Ajuda', action: onOpenHelp }
                     ].map((link) => (
                         <li key={link.label}>
                             <button
-                                onClick={() => onNavigate(link.filter)}
+                                onClick={() => link.action ? link.action() : onNavigate(link.filter)}
                                 className="hover:text-orange-600 transition-all relative group cursor-pointer"
                             >
                                 {link.label}

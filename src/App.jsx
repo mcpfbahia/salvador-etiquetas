@@ -21,7 +21,7 @@ import HelpCenterPage from './components/HelpCenterPage';
 
 // Dados simulados da loja
 const MOCK_PRODUCTS = [
-    { id: 1, name: "Adesivo Vinil Premium", size: "5x5cm", precoBase: 1.50, category: "Vinil", image: "/mockups/vinil-premium.png" },
+    { id: 1, name: "Adesivo Vinil Premium", size: "5x5cm", precoBase: 1.50, category: "Vinil", image: "/etiqueta1.jpeg" },
     { id: 2, name: "Adesivo Transparente", size: "4x4cm", precoBase: 2.00, category: "Transparente", image: "/mockups/transparente.png" },
     { id: 3, name: "Adesivo de Papel Kraft", size: "6x6cm", precoBase: 0.80, category: "Papel", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800" },
     { id: 4, name: "Adesivo Holográfico", size: "5x5cm", precoBase: 3.50, category: "Vinil", image: "https://images.unsplash.com/photo-1621607512214-68297480165e?q=80&w=800" },

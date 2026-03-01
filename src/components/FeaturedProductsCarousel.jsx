@@ -8,7 +8,7 @@ const FEATURED_PRODUCTS = [
         description: "Resistente à água e radiação UV. Perfeito para personalização.",
         basePrice: 45.00,
         badge: "Vinil Premium",
-        image: "/mockups/vinil-premium.png"
+        image: "/etiqueta1.jpeg"
     },
     {
         id: 102,

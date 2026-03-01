@@ -5,29 +5,29 @@ const segments = [
     {
         id: 1,
         title: 'Delivery & Fast Food',
-        description: 'Lacres de segurança e adesivos para embalagens quentes.',
-        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1200&auto=format&fit=crop',
+        description: 'Lacres de segurança e adsivos para embalagens quentes.',
+        image: '/categoria-fast-food.jpg',
         className: 'md:col-span-2 md:row-span-2'
     },
     {
         id: 2,
         title: 'Cosméticos & Beleza',
         description: 'Rótulos à prova d\'água para frascos e potes.',
-        image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop',
+        image: '/categoria-cosmeticos.jpg',
         className: 'md:col-span-2 md:row-span-1'
     },
     {
         id: 3,
         title: 'Moda & Vestuário',
         description: 'Tags em papel e etiquetas de composição.',
-        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600&auto=format&fit=crop',
+        image: '/categoria-moda-vestuario.jpg',
         className: 'md:col-span-1 md:row-span-1'
     },
     {
         id: 4,
         title: 'Artesanato & Presentes',
         description: 'Adesivos afetivos e selos decorativos.',
-        image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=600&auto=format&fit=crop',
+        image: '/categoria-artesanato-presentes.jpg',
         className: 'md:col-span-1 md:row-span-1'
     }
 ];
